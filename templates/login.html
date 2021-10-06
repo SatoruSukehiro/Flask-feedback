@@ -1,0 +1,36 @@
+{%extends "index.html"%}
+
+
+{%block content%}
+
+<form action="" method="POST">
+    {{form.hidden_tag()}}
+    {%if get_flashed_messages()%}
+        <div class="alert alert-warning">
+            {{get_flashed_messages()[0]}}
+        </div>
+    {%endif%}
+    {%if form.errors%}
+            {%for input in form.errors%}
+           <div class= "alert alert-warning">
+               {{form.errors[input].pop()}}
+           </div> 
+            {%endfor%}
+    {%endif%}
+    {%for input in form%}
+        {%if input.widget.input_type != "hidden"%}
+            <div class = "form-group m-3">
+                {{input.label(class_="form-label")}} :
+                {{input(class_="form-control")}}   
+            </div>
+        {%endif%}
+    {%endfor%}
+    <p>Dont have an account? <a href="/register">Register Here</a></p>
+    <button class="btn btn-outline-dark">Submit</button>
+
+</form>
+
+
+
+
+{%endblock%}
