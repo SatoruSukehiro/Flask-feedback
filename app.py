@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = "ITSASECRETDUHHH"
 connect_db(app)
 bcrypt = Bcrypt()
 
-            
+ #route           
 @app.route('/')
 def homepage():
     return redirect('/login')
